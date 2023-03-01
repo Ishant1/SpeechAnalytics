@@ -24,7 +24,7 @@ parser.add_argument("-t", "--topic", default="ERC")
 
 args = vars(parser.parse_args())
 
-if __name__=="main":
+if __name__ == "__main__":
     topic_name = args['topic']
     print(topic_name)
     colab_setup(topic=topic_name)
