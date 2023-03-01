@@ -11,11 +11,11 @@ def colab_setup(topic=''):
 
     MODEL_DIR = '/content/gdrive/MyDrive/model'
     DATA_DIR = os.path.join('/content/gdrive/MyDrive/dataset',topic)
-    ERC_DIR = os.path.join('/content/gdrive/MyDrive/Research/ERC',topic)
+    ERC_DIR = os.path.join('/content/gdrive/MyDrive/Research',topic)
 
     os.environ['MODEL_DIR'] = MODEL_DIR
     os.environ['DATA_DIR'] = DATA_DIR
-    os.environ['ERC_DIR'] = ERC_DIR
+    os.environ['RESEARCH_DIR'] = ERC_DIR
     sys.path.append('/content/SpeechAnalytics')
 
 
@@ -26,4 +26,5 @@ args = vars(parser.parse_args())
 
 if __name__=="main":
     topic_name = args['topic']
+    print(topic_name)
     colab_setup(topic=topic_name)
