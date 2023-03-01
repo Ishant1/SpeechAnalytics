@@ -12,10 +12,6 @@ if __name__ == "__main__":
     topic_name = args['topic']
     print(topic_name)
 
-    from google.colab import drive
-
-    drive.mount('/content/gdrive')
-
     MODEL_DIR = '/content/gdrive/MyDrive/model'
     DATA_DIR = os.path.join('/content/gdrive/MyDrive/dataset', topic_name)
     ERC_DIR = os.path.join('/content/gdrive/MyDrive/Research', topic_name)
