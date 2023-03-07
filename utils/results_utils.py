@@ -13,7 +13,7 @@ def results_to_json(model_name,dataset_name,results,time_taken,filename):
         'RunTime': time_taken,
     }
 
-    with open(filename) as f:
+    with open(filename,'w') as f:
         json.dump(json_results, f)
     print(f"Results for experiment{model_name}_{dataset_name} has been saved at {filename} at {time_of_result}")
 
