@@ -191,4 +191,4 @@ def get_roc_graphs(roc_dict,index_to_label):
         axs[i].set(xlabel='False Positive Rate', ylabel='True Positive Rate',
             title=f"{index_to_label[i]} ROC")
 
-        plt.show()
+    plt.show()
