@@ -60,7 +60,7 @@ def get_metrics(true_labels, predicted_labels):
     """
     results_df = pd.DataFrame(np.array(score(true_labels, predicted_labels)).T,
                               columns=['Precision', 'Recall', 'f1-score', 'Support'])
-    results_df.index = np.unique(predicted_labels)
+    results_df.index = np.unique(true_labels)
     results_df = pd.concat([results_df, pd.DataFrame(
         np.array(score(true_labels, predicted_labels, average='micro')).reshape(1, -1),
         columns=['Precision', 'Recall', 'f1-score', 'Support'], index=['average'])])
