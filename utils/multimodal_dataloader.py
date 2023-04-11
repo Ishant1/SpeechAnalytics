@@ -54,7 +54,7 @@ class TextAudioDataset(Dataset):
 
         return {
             "text": {
-                "ids": torch.LongTensor(ids),
+                "input_ids": torch.LongTensor(ids),
                 "mask": torch.LongTensor(mask)},
             "audio": {"input_values": torch.LongTensor(input_values)},
             "targets": torch.tensor(targets, dtype=torch.float32)
