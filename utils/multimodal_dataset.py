@@ -51,6 +51,7 @@ class TextAudioDataset(Dataset):
             add_special_tokens=True,
             max_length=self.max_len,
             padding="max_length",
+            return_tensors="pt",
         )
         ids = tokenized["input_ids"]
         mask = tokenized["attention_mask"]
@@ -67,10 +68,10 @@ class TextAudioDataset(Dataset):
 
         return {
             "text": {
-                "input_ids": torch.LongTensor(ids),
-                "mask": torch.LongTensor(mask),
+                "input_ids": ids,
+                "mask": mask,
             },
-            "audio": {"input_values": torch.LongTensor(input_values)},
+            "audio": {"input_values": input_values},
             "targets": torch.tensor(targets, dtype=torch.float32),
         }
 
