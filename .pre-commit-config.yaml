@@ -19,3 +19,4 @@ repos:
         entry: flake8
         language: system
         types: [python]
+        args: ["--config", "flake8.ini"]
