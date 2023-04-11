@@ -6,6 +6,7 @@ import pandas as pd
 import torch
 import torchaudio
 import transformers
+from speechbrain.dataio.preprocess import AudioNormalizer
 from torch.utils.data import Dataset
 
 
@@ -58,8 +59,14 @@ class TextAudioDataset(Dataset):
 
         wav_filename = self.audio_filepath[idx]
         audio = torchaudio.load(wav_filename)
+        raw_audio, sampling_rate = audio
+
+        if raw_audio.dim() == 3:
+            an = AudioNormalizer()
+            raw_audio = an(raw_audio, sampling_rate)
+
         input_values = self.processor(
-            raw_speech=audio[0], sampling_rate=audio[1], return_tensors="pt"
+            raw_speech=raw_audio, sampling_rate=sampling_rate, return_tensors="pt"
         ).input_values
 
         targets = (
