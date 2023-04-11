@@ -61,9 +61,8 @@ class TextAudioDataset(Dataset):
         audio = torchaudio.load(wav_filename)
         raw_audio, sampling_rate = audio
 
-        if raw_audio.shape[0] != 1:
-            an = AudioNormalizer()
-            raw_audio = an(raw_audio, sampling_rate)
+        an = AudioNormalizer()
+        raw_audio = an(raw_audio.unsqueeze(0), sampling_rate)
 
         input_values = self.processor(
             raw_speech=raw_audio, sampling_rate=sampling_rate, return_tensors="pt"
