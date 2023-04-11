@@ -61,7 +61,7 @@ class TextAudioDataset(Dataset):
         audio = torchaudio.load(wav_filename)
         raw_audio, sampling_rate = audio
 
-        if raw_audio.dim() == 3:
+        if raw_audio.shape[0] != 1:
             an = AudioNormalizer()
             raw_audio = an(raw_audio, sampling_rate)
 
