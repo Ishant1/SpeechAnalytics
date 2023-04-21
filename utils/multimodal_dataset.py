@@ -65,7 +65,7 @@ class TextAudioDataset(Dataset):
         raw_audio = an(raw_audio.unsqueeze(0), sampling_rate)
 
         input_values = self.processor(
-            raw_speech=raw_audio, sampling_rate=sampling_rate, return_tensors="pt"
+            audio=raw_audio, sampling_rate=sampling_rate, return_tensors="pt"
         ).input_values
 
         targets = (
